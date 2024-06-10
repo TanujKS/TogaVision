@@ -781,7 +781,12 @@ td, th {
   font-size: 24px;
 }
 
-b, sup, sub, u, del {
+b {
+  color:rgb(0, 0, 0);
+  font-weight: 600;
+}
+
+sup, sub, u, del {
   color: #49e4fa;
 }
 
@@ -2299,7 +2304,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .banner-area {
   background: url(../img/header-bg.jpg) center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .banner-area .overlay-bg {
@@ -2623,9 +2628,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 15px;
 }
 
+.post-list .single-post .details ul {
+      list-style-type: disc;
+      margin-left: 20px;
+}
+
+.post-list .single-post .addresses {
+  margin-top: 30px;
+}
 .post-list .single-post .address {
   color: #222;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .post-list .single-post .lnr {
@@ -2663,6 +2676,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 }
 
+.post-list .single-post .thumb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .post-list .single-post .thumb h5 {
   margin-top: 25px;
   margin-bottom: 10px;
@@ -2670,10 +2689,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .post-list .single-post .thumb .tags li {
   margin-bottom: 5px;
-  display: inline-block;
+  display: block;
   background: #fff;
   border: 1px solid #eee;
-  padding: 6px 10px;
+  padding: 6px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;

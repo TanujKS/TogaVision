@@ -41,12 +41,13 @@ function createPostDiv(doc) {
 
     const title = data.title || 'No title';
     const manager = data.manager || 'No manager';
-    const image_url = data.image_url || 'img/post.png';
     const roles_needed = data.roles_needed || [];
-    const description = data.description || 'No description';
-    const time_required = data.time_required || 'No time required';
+    const description = data.description || '';
+    const time_required = data.time_required || 'No time specified';
     const location = data.location || 'No location';
-    
+    const id = data.id || 'N/A';
+    const tasks = data.tasks || [];
+
     const postDiv = document.createElement('div');
 
     function addRoles(roles) {
@@ -61,11 +62,21 @@ function createPostDiv(doc) {
         return html
     }
 
+    function addTasks(tasks) {
+        var html = ''
+        for (const task in tasks) {
+            html += `
+            <li>
+                <p>${tasks[task]}</p>
+            </li>
+            `
+        }
+        return html
+    }
+
     postDiv.innerHTML = `
         <div class="single-post d-flex flex-row">
-            <div class="thumb col-sm-3">
-                <img src="${image_url}">
-                
+            <div class="thumb col-sm-3">                
                 <h5>Roles Needed:</h5>
                 
                 <ul class="tags">
@@ -84,8 +95,14 @@ function createPostDiv(doc) {
                     </ul>
                 </div>
                 <p>${description}</p>
-                <p class="address"><span class="lnr lnr-map"></span>${location}</p>
-                <p class="address"><span class="lnr lnr-database"></span>${time_required}</p>
+                <ul>
+                    ${addTasks(tasks)}
+                </ul>
+                <div class="addresses">
+                    <p class="address"><span class="lnr lnr-map"></span>${location}</p>
+                    <p class="address"><span class="lnr lnr-clock"></span>${time_required}</p>
+                    <p class="address"><span class="lnr lnr-dice"></span>Project ID: <b>${id}</b></p>
+                </div>
             </div>
         </div>
     `;
@@ -163,7 +180,6 @@ function createFeaturedDiv(carouselDiv, doc) {
 
     const title = data.title || 'No title';
     const manager = data.manager || 'No manager';
-    const image_url = data.image_url || 'img/r1.jpg';
     const description = data.description || 'No description';
     const time_required = data.time_required || 'No time required';
     const location = data.location || 'No location';
@@ -171,13 +187,12 @@ function createFeaturedDiv(carouselDiv, doc) {
     const featuredDiv = document.createElement('div');
     featuredDiv.innerHTML = `
     <div class="single-rated">
-        <img class="img-fluid" src="${image_url}">
         <h4>${title}</h4>
         <h6>Project Manager: ${manager}</h6>
         <p>${description}</p>
         <p class="address"><span class="lnr lnr-map"></span> ${location}</p>
         <p class="address"><span class="lnr lnr-database"></span> ${time_required}</p>
-        <a href="https://forms.google.com" class="btns text-uppercase">Join</a>
+        <a href="https://forms.gle/7eAg7hACsu2jKx7V7" class="btns text-uppercase">Join</a>
     </div>
     `;
     
