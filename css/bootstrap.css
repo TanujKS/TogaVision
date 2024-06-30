@@ -512,8 +512,9 @@ mark,
 }
 
 .img-fluid {
-  max-width: 100%;
-  height: auto;
+  width: 100px;
+  height: 250px;
+  object-fit: cover; /* or 'contain', 'fill', 'scale-down' depending on your needs */
 }
 
 .img-thumbnail {
