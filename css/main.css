@@ -567,7 +567,7 @@ td, th {
 }
 
 .text-white {
-  color: #fff;
+  color: #ffffff;
 }
 
 .text-black {
@@ -2217,18 +2217,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 }
 
-.p1-gradient-bg, .banner-area .overlay-bg, .sidebar .single-slidebar .cat-list li:hover, .callto-action-area, .single-price:hover .price-bottom, .single-service:hover, .submit-right, .submit-left, .contact-btns, .form-area .primary-btn {
+.p1-gradient-bg, .selected, .banner-area .overlay-bg, .sidebar .single-slidebar .cat-list li:hover, .callto-action-area, .single-price:hover .price-bottom, .single-service:hover, .submit-right, .submit-left, .contact-btns, .form-area .primary-btn {
   background-image: -moz-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
   background-image: -webkit-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
   background-image: -ms-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
 }
 
-.p1-gradient-color, .feat-txt h1 {
+.p1-gradient-color, .feat-txt, h1 {
   background: -moz-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
   background: -webkit-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
   background: -ms-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .primary-btn {
@@ -2255,7 +2254,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   outline: none;
 }
 
-.primary-btn span {
+.primary-btn   {
   color: #fff;
   position: absolute;
   top: 50%;
@@ -2584,11 +2583,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #222;
 }
 
-.post-list .cat-list li:hover {
+.selected, .post-list .cat-list li:hover {
   background-color: #49e4fa;
 }
 
-.post-list .cat-list li:hover a {
+.selected, .post-list .cat-list li:hover a {
   color: #fff;
 }
 
@@ -2795,16 +2794,28 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .sidebar .single-slidebar .cat-list li {
-  padding: 0px 10px;
-  background-color: #fff;
+  background-color: #ffffff;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
 
-.sidebar .single-slidebar .cat-list li:hover a {
+.selected, .sidebar .single-slidebar .cat-list li:hover a {
   color: #fff;
+}
+
+.selected p, .selected span {
+  color: #fff;
+}
+
+.selected li {
+  padding: 0px 10px !important;
+  background-color: #fff !important;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .sidebar .single-slidebar .cat-list p {

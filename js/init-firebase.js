@@ -17,13 +17,13 @@ const db = firebase.firestore();
 //query
 const searchParams = new URLSearchParams(window.location.search);
 const role_query = searchParams.get("role")
-console.log(role_query)
-if (role_query !== null) {
-    const subtitle = document.createElement("h2")
-    subtitle.classList.add("text-white")
-    subtitle.innerHTML = `Filtering By "${role_query}"`
-    document.getElementById("title").appendChild(subtitle);
-}
+
+// if (role_query !== null) {
+//     const subtitle = document.createElement("h2")
+//     subtitle.classList.add("text-white")
+//     subtitle.innerHTML = `Filtering By "${role_query}"`
+//     document.getElementById("title").appendChild(subtitle);
+// }
 
 
 
@@ -149,9 +149,10 @@ function getRoleCount(role) {
 }
 
 function createRoleDiv(role, count) {
+    console.log(role, role_query)
     const roleDiv = document.createElement('div');
     roleDiv.innerHTML = `
-        <li><a class="justify-content-between d-flex" href="?role=${role}"><p>${capitalizeFirstLetter(role)}</p><span>${count}</span></a></li>
+        <li><a class="justify-content-between d-flex ${role == role_query ? "selected" : ""}" href="?role=${role}"><p>${capitalizeFirstLetter(role)}</p><span>${count}</span></a></li>
     `;
     document.getElementById('role-list').appendChild(roleDiv);
 }
