@@ -36,9 +36,7 @@ function capitalizeFirstLetter(string) {
 
 
 //getting projects
-function createPostDiv(doc) {
-    const data = doc.data();
-
+function createPostDiv(data) {
     const title = data.title || 'No title';
     const manager = data.manager || 'No manager';
     const roles_needed = data.roles_needed || [];
@@ -91,7 +89,7 @@ function createPostDiv(doc) {
                         <h6>Project Manager: ${manager}</h6>					
                     </div>
                     <ul class="btns">
-                        <li><a href="https://forms.google.com" target="_blank">Join</a></li>
+                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScQzL6alhUixjCpLmiWwPigiOXb-Qrq002ttspTZ26By1TaxA/viewform?usp=pp_url&entry.1313077644=${id}&entry.1073365232=${title}&entry.1058614926=${capitalizeFirstLetter(roles_needed[0])}" target="_blank">Join</a></li>
                     </ul>
                 </div>
                 <p>${description}</p>
@@ -122,7 +120,29 @@ function getProjects() {
     ref
         .get()
         .then((querySnapshot) => {
+            const documents = []
             querySnapshot.forEach((doc) => {
+                documents.push(doc.data())
+            });
+
+            documents.sort((a, b) => {
+                console.log(a, b)
+                const regex = /^(\d+)([A-Za-z]*)$/;
+                const [, aNum, aAlpha] = a.id.match(regex);
+                const [, bNum, bAlpha] = b.id.match(regex);
+
+                const numCompare = parseInt(aNum) - parseInt(bNum);
+
+                if (numCompare !== 0) {
+                    return numCompare;
+                }
+
+                return aAlpha.localeCompare(bAlpha);
+            })
+
+            documents.reverse()
+
+            documents.forEach((doc) => {
                 createPostDiv(doc)
             });
     })
@@ -184,7 +204,9 @@ function createFeaturedDiv(carouselDiv, doc) {
     const description = data.description || 'No description';
     const time_required = data.time_required || 'No time required';
     const location = data.location || 'No location';
-
+    const id = data.id
+    const roles_needed = data.roles_needed
+    
     const featuredDiv = document.createElement('div');
     featuredDiv.innerHTML = `
     <div class="single-rated">
@@ -193,7 +215,8 @@ function createFeaturedDiv(carouselDiv, doc) {
         <p>${description}</p>
         <p class="address"><span class="lnr lnr-map"></span> ${location}</p>
         <p class="address"><span class="lnr lnr-database"></span> ${time_required}</p>
-        <a href="https://forms.gle/7eAg7hACsu2jKx7V7" class="btns text-uppercase">Join</a>
+        <p class="address"><span class="lnr lnr-dice"></span>Project ID: <b>${data.id}</b></p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQzL6alhUixjCpLmiWwPigiOXb-Qrq002ttspTZ26By1TaxA/viewform?usp=pp_url&entry.1313077644=${id}&entry.1073365232=${title}&entry.1058614926=${capitalizeFirstLetter(roles_needed[0])}" target="_blank" class="btns text-uppercase">Join</a>
     </div>
     `;
     

@@ -3555,6 +3555,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-color: #f9f9ff;
   padding: 30px;
   margin-bottom: 30px;
+  min-height: 250px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
