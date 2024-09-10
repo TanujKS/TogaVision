@@ -2730,12 +2730,19 @@ body.mobile-nav-active #mobile-nav-toggle {
     display: inline-block !important;
   }
   .post-list .title.flex-row {
-    flex-direction: column !important;
-    display: inline-block !important;
+    flex-direction: row !important;
+    display: block !important;
   }
   .post-list .details {
     margin-top: 30px;
   }
+}
+
+.single-post .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .post-list .loadmore-btn {

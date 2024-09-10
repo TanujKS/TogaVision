@@ -83,7 +83,7 @@ function createPostDiv(data) {
             </div>
 
             <div class="details col-sm-9">
-                <div class="title d-flex flex-row justify-content-between">
+                <div class="title">
                     <div class="titles">
                         <h4>${title}</h4>
                         <h6>Project Manager: ${manager}</h6>					
