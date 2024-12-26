@@ -72,6 +72,12 @@ function createPostDiv(data) {
         return html
     }
 
+    function parseLinks(description) {
+        const urlWithTextRegex = /(\b[\w\s]+\b)\s*\((https?:\/\/[^\s]+)\)/g;
+      
+        return description.replace(urlWithTextRegex, '<a href="$2" style="color: #0056a3;" target="_blank">$1</a>');
+    }
+
     postDiv.innerHTML = `
         <div class="single-post d-flex flex-row">
             <div class="thumb col-sm-3">                
@@ -92,7 +98,7 @@ function createPostDiv(data) {
                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScQzL6alhUixjCpLmiWwPigiOXb-Qrq002ttspTZ26By1TaxA/viewform?usp=pp_url&entry.1313077644=${id}&entry.1073365232=${title}&entry.1058614926=${capitalizeFirstLetter(roles_needed[0])}" target="_blank">Join</a></li>
                     </ul>
                 </div>
-                <p>${description}</p>
+                <p>${parseLinks(description)}</p>
                 <ul>
                     ${addTasks(tasks)}
                 </ul>
